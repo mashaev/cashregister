@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link rel="stylesheet"
+              href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Система контроля</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Курсы <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Преподаватели <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Студенты <span class="sr-only">(current)</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h3>Курсы</h3></div>
+
+                    <div class="col-sm-4">
+                        <a class="btn btn-info add-new" href="/getaddcourse">Добавить</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Названия</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Активный</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  th:each="course:${courses}" >
+                        <td th:text="${course.name}" ></td>
+                        <td th:text="${course.price}" ></td>
+                        <td th:text="${course.date_create}" ></td>
+
+
+                        <input type="checkbox" name="is_active"
+                               th:field="*{course.is_active}"
+                               th:value="1">
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
